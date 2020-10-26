@@ -1,9 +1,11 @@
 <!Doctype html>
 
 <html xmlns:th="http://thymeleaf.org">
-    <head>
-        <title>Technical Blog Application</title>
+    <head th:replace="layout :: site-head">
+        <title>Spring MVC Application</title>
     </head>
+
+    <header th:replace="layout :: logged-out"></header>
 
     <body>
         <h1>All Technical Posts</h1>
@@ -17,4 +19,21 @@
             </post>
         </main>
     </body>
+
+    <!--<body>
+    <h1>All Technical Posts</h1>
+    <main id="post">
+        <article>
+            <h2 th:text="${post.title}"></h2>
+            <div>
+                <i>Posted On:</i>
+                <span th:text="${#dates.format(post.date,'dd-MMM-yyyy')}"></span>
+            </div>
+
+            <div>
+                <p th:text="${post.body}"></p>
+            </div>
+        </article>
+    </main>
+    </body>-->
 </html>
