@@ -3,6 +3,8 @@ package TechnicalBlog.Controller;
 import TechnicalBlog.Model.Post;
 import TechnicalBlog.Model.User;
 import TechnicalBlog.service.PostService;
+import TechnicalBlog.service.UserService;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ public class UserController {
 
     @Autowired
     private PostService postService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("users/login")
     public String login(){
@@ -37,5 +41,15 @@ public class UserController {
     @RequestMapping(value = "users/login", method= RequestMethod.POST)
     public String loginUser(User user){
         return "redirect:/posts";
+    }
+
+    @RequestMapping(value = "users/registration", method = RequestMethod.POST)
+    public String registerUser(User user){
+        if(userService.login(user)){
+            return "redirect:/posts";
+        }
+        else{
+            return "users/login";
+        }
     }
 }

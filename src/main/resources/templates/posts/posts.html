@@ -2,14 +2,14 @@
 
 <html xmlns:th="http://thymeleaf.org">
     <head th:replace="layout :: site-head">
-        <title>Spring MVC Application - USer Posts</title>
+        <title>Spring MVC Application - User Posts</title>
     </head>
 
     <header th:replace="layout :: logged-in"></header>
 
     <body>
         <h1>
-            Welcome USer. These are your posts
+            Welcome User. These are your posts
         </h1>
         <main id="posts">
             <post th:each="p : ${posts}">
