@@ -1,10 +1,23 @@
 package TechnicalBlog.Model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) //This is done for genrating automatic value for the primary key value
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name="body")
     private String body;
+
+    @Column(name="date")
     private Date date;
 
     public void setTitle(String title) {
@@ -32,4 +45,11 @@ public class Post {
     }
 
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
